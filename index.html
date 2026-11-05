@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบสำรวจ 1 ผลิตภัณฑ์ 1 OCOP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&family=Mali:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Mali', cursive; 
+            background: linear-gradient(135deg, #FFE2E2, #F3E8FF, #E0F2FE); 
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .font-kanit { font-family: 'Kanit', sans-serif; }
+        .tab-active { border-bottom: 4px solid #8B5CF6; color: #8B5CF6; font-weight: 600; }
+        .tab-inactive { color: #6B7280; }
+    </style>
+</head>
+<body class="p-4 md:p-8 text-gray-800">
+
+    <!-- Container หลัก -->
+    <div class="max-w-3xl w-full mx-auto bg-white/90 backdrop-blur-md rounded-3xl shadow-xl overflow-hidden flex flex-col h-fit flex-grow-0">
+        
+        <!-- Header & Navigation -->
+        <div class="bg-gradient-to-r from-purple-400 via-pink-400 to-rose-400 p-6 text-center text-white">
+            <h1 class="font-kanit text-2xl md:text-3xl font-bold mb-2">กิจกรรมสานสัมพันธ์บ้านและโรงเรียน</h1>
+            <h2 class="text-xl font-semibold">ฝ่ายกิจการนักเรียน โรงเรียนเซนต์ปอลคอนแวนต์</h2>
+        </div>
+
+        <div class="flex border-b border-gray-200">
+            <button onclick="switchTab('survey')" id="tab-survey" class="flex-1 py-4 text-center font-kanit tab-active transition-colors duration-300 hover:bg-gray-50">📋 กรอกแบบสำรวจ</button>
+            <button onclick="switchTab('admin')" id="tab-admin" class="flex-1 py-4 text-center font-kanit tab-inactive transition-colors duration-300 hover:bg-gray-50">🔒 ผู้ดูแลระบบ</button>
+        </div>
+
+        <!-- Section: Survey Form -->
+        <div id="survey-section" class="p-6 md:p-8 block">
+            <form id="ocopForm" class="space-y-6">
+                <div>
+                    <label class="block font-kanit text-lg font-medium text-gray-700 mb-2">1. ห้องเรียนที่รับผิดชอบ</label>
+                    <select id="classroom" required class="w-full border border-gray-300 rounded-xl p-3 focus:ring-2 focus:ring-pink-400 focus:border-pink-400 outline-none transition shadow-sm bg-white">
+                        <option value="" disabled selected>-- โปรดเลือกห้องเรียน --</option>
+                        <optgroup label="ระดับประถมศึกษา">
+                            <option value="ประถมศึกษาปีที่ 1/1">ประถมศึกษาปีที่ 1/1</option>
+                            <option value="Primary G 1A">Primary G 1A</option>
+                            <option value="Primary G 1B">Primary G 1B</option>
+                            <option value="ประถมศึกษาปีที่ 2/1">ประถมศึกษาปีที่ 2/1</option>
+                            <option value="Primary G2A">Primary G2A</option>
+                            <option value="Primary G2B">Primary G2B</option>
+                            <option value="ประถมศึกษาปีที่ 3/1">ประถมศึกษาปีที่ 3/1</option>
+                            <option value="ประถมศึกษาปีที่ 3/2">ประถมศึกษาปีที่ 3/2</option>
+                            <option value="Primary G3A">Primary G3A</option>
+                            <option value="Primary G3B">Primary G3B</option>
+                            <option value="ประถมศึกษาปีที่ 4/1">ประถมศึกษาปีที่ 4/1</option>
+                            <option value="ประถมศึกษาปีที่ 4/2">ประถมศึกษาปีที่ 4/2</option>
+                            <option value="Primary G4A">Primary G4A</option>
+                            <option value="Primary G4B">Primary G4B</option>
+                            <option value="ประถมศึกษาปีที่ 5/1">ประถมศึกษาปีที่ 5/1</option>
+                            <option value="ประถมศึกษาปีที่ 5/2">ประถมศึกษาปีที่ 5/2</option>
+                            <option value="Primary G5A">Primary G5A</option>
+                            <option value="Primary G5B">Primary G5B</option>
+                            <option value="ประถมศึกษาปีที่ 6/1">ประถมศึกษาปีที่ 6/1</option>
+                            <option value="ประถมศึกษาปีที่ 6/2">ประถมศึกษาปีที่ 6/2</option>
+                            <option value="Primary G6">Primary G6</option>
+                        </optgroup>
+                        <optgroup label="ระดับมัธยมศึกษา">
+                            <option value="มัธยมศึกษาปีที่ 1/1">มัธยมศึกษาปีที่ 1/1</option>
+                            <option value="มัธยมศึกษาปีที่ 1/2 G">มัธยมศึกษาปีที่ 1/2 G</option>
+                            <option value="Secondary G7">Secondary G7</option>
+                            <option value="มัธยมศึกษาปีที่ 2/1">มัธยมศึกษาปีที่ 2/1</option>
+                            <option value="มัธยมศึกษาปีที่ 2/2">มัธยมศึกษาปีที่ 2/2</option>
+                            <option value="Secondary G8">Secondary G8</option>
+                            <option value="มัธยมศึกษาปีที่ 3/1">มัธยมศึกษาปีที่ 3/1</option>
+                            <option value="มัธยมศึกษาปีที่ 3/2">มัธยมศึกษาปีที่ 3/2</option>
+                            <option value="Secondary G9">Secondary G9</option>
+                            <option value="มัธยมศึกษาปีที่ 4/1">มัธยมศึกษาปีที่ 4/1</option>
+                            <option value="มัธยมศึกษาปีที่ 4/2">มัธยมศึกษาปีที่ 4/2</option>
+                            <option value="มัธยมศึกษาปีที่ 5/1">มัธยมศึกษาปีที่ 5/1</option>
+                            <option value="มัธยมศึกษาปีที่ 5/2">มัธยมศึกษาปีที่ 5/2</option>
+                            <option value="มัธยมศึกษาปีที่ 6/1">มัธยมศึกษาปีที่ 6/1</option>
+                            <option value="มัธยมศึกษาปีที่ 6/2">มัธยมศึกษาปีที่ 6/2</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block font-kanit text-lg font-medium text-gray-700 mb-2">2. ชื่อ-นามสกุล ครูผู้รับผิดชอบ</label>
+                    <input type="text" id="teacherName" required placeholder="ตัวอย่าง: ครูสมศรี ใจดี" class="w-full border border-gray-300 rounded-xl p-3 focus:ring-2 focus:ring-pink-400 focus:border-pink-400 outline-none transition shadow-sm">
+                </div>
+
+                <div>
+                    <label class="block font-kanit text-lg font-medium text-gray-700 mb-2">3. ชื่อผลิตภัณฑ์ (1 OCOP)</label>
+                    <input type="text" id="productName" required placeholder="ตัวอย่าง: กระเป๋าผ้ามัดย้อม" class="w-full border border-gray-300 rounded-xl p-3 focus:ring-2 focus:ring-pink-400 focus:border-pink-400 outline-none transition shadow-sm">
+                </div>
+
+                <div>
+                    <label class="block font-kanit text-lg font-medium text-gray-700 mb-2">4. รายละเอียดผลิตภัณฑ์</label>
+                    <textarea id="productDetails" required rows="4" placeholder="ระบุจุดเด่น วัสดุที่ใช้ หรือข้อมูลที่น่าสนใจ..." class="w-full border border-gray-300 rounded-xl p-3 focus:ring-2 focus:ring-pink-400 focus:border-pink-400 outline-none transition shadow-sm resize-none"></textarea>
+                </div>
+
+                <button type="submit" class="w-full font-kanit text-lg bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold py-4 rounded-xl shadow-lg hover:scale-[1.02] hover:shadow-xl transition-all duration-300">
+                    ✨ บันทึกข้อมูล
+                </button>
+            </form>
+            
+            <!-- ข้อความเมื่อบันทึกสำเร็จ -->
+            <div id="successMessage" class="hidden text-center py-10">
+                <div class="text-6xl mb-4">🎉</div>
+                <h3 class="font-kanit text-2xl font-bold text-green-500 mb-2">บันทึกข้อมูลเรียบร้อยแล้ว!</h3>
+                <p class="text-gray-600 mb-6 font-kanit">ขอบคุณที่ร่วมเป็นส่วนหนึ่งในกิจกรรมครับ</p>
+                <button onclick="resetForm()" class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-6 py-2 rounded-full font-kanit transition-colors duration-200">
+                    กรอกข้อมูลใหม่
+                </button>
+            </div>
+        </div>
+
+        <!-- Section: Admin -->
+        <div id="admin-section" class="p-6 md:p-8 hidden">
+            <!-- Login Simulation -->
+            <div id="admin-login" class="text-center max-w-sm mx-auto py-10">
+                <h3 class="font-kanit text-xl font-bold mb-4">เข้าสู่ระบบผู้ดูแล</h3>
+                <input type="password" id="adminPin" placeholder="รหัสผ่าน (ลองใส่ 1234)" class="w-full text-center border border-gray-300 rounded-xl p-3 mb-4 focus:ring-2 focus:ring-purple-400 outline-none font-kanit">
+                <button onclick="checkAdmin()" class="w-full bg-purple-500 text-white font-kanit py-3 rounded-xl hover:bg-purple-600 transition shadow-md">เข้าสู่ระบบ</button>
+                <p id="loginError" class="text-red-500 text-sm mt-3 hidden font-kanit">รหัสผ่านไม่ถูกต้อง!</p>
+            </div>
+
+            <!-- Data Table -->
+            <div id="admin-dashboard" class="hidden">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="font-kanit text-xl font-bold">ข้อมูลรายการผลิตภัณฑ์</h3>
+                    <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm font-kanit shadow-sm" id="totalCount">กำลังโหลด...</span>
+                </div>
+                
+                <div class="overflow-x-auto rounded-xl border border-gray-200 shadow-sm">
+                    <table class="w-full text-left bg-white whitespace-nowrap">
+                        <thead class="bg-gray-50 font-kanit text-gray-700">
+                            <tr>
+                                <th class="p-3 border-b">วันที่/เวลา</th>
+                                <th class="p-3 border-b">ห้องเรียน</th>
+                                <th class="p-3 border-b">ชื่อครู</th>
+                                <th class="p-3 border-b">ชื่อผลิตภัณฑ์</th>
+                                <th class="p-3 border-b">รายละเอียด</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dataTableBody" class="text-sm font-kanit font-light">
+                            <!-- Data will be populated here by Fetch API -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ส่วนที่เพิ่มใหม่: Footer สำหรับใส่ลิขสิทธิ์และเครดิต -->
+    <footer class="mt-8 mb-4 text-center">
+        <p class="font-kanit text-gray-500/80 text-sm drop-shadow-sm font-light">
+            Copyright &copy; 2026 ระบบสำรวจ One Classroom One Product | By POMMY@St.Paul
+        </p>
+    </footer>
+
+    <script>
+        // ใส่ URL ที่ถูกต้องให้แล้ว
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyXs1z8AgPgQ07JwmMX4uLk9WmDFMT1ThokMqwSuMC1xKdafeKKlimCS6Yjin45X9IWUg/exec'; 
+
+        // Tab Management
+        function switchTab(tab) {
+            document.getElementById('tab-survey').className = tab === 'survey' ? 'flex-1 py-4 text-center font-kanit tab-active transition-colors hover:bg-gray-50' : 'flex-1 py-4 text-center font-kanit tab-inactive transition-colors hover:bg-gray-50';
+            document.getElementById('tab-admin').className = tab === 'admin' ? 'flex-1 py-4 text-center font-kanit tab-active transition-colors hover:bg-gray-50' : 'flex-1 py-4 text-center font-kanit tab-inactive transition-colors hover:bg-gray-50';
+            
+            document.getElementById('survey-section').style.display = tab === 'survey' ? 'block' : 'none';
+            document.getElementById('admin-section').style.display = tab === 'admin' ? 'block' : 'none';
+            
+            if(tab === 'admin') {
+                document.getElementById('adminPin').value = '';
+                document.getElementById('loginError').style.display = 'none';
+                document.getElementById('admin-login').style.display = 'block';
+                document.getElementById('admin-dashboard').style.display = 'none';
+            }
+        }
+
+        // Handle Form Submit (ส่งข้อมูลไป Google Sheet)
+        document.getElementById('ocopForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = 'กำลังบันทึกข้อมูล... ⏳';
+            submitBtn.disabled = true;
+            submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+            
+            const newData = {
+                classroom: document.getElementById('classroom').value,
+                teacher: document.getElementById('teacherName').value,
+                product: document.getElementById('productName').value,
+                details: document.getElementById('productDetails').value
+            };
+
+            try {
+                await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: JSON.stringify(newData)
+                });
+
+                this.style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
+            } catch (error) {
+                alert('เกิดข้อผิดพลาดในการบันทึกข้อมูล โปรดลองอีกครั้ง');
+            } finally {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+            }
+        });
+
+        // รีเซ็ตฟอร์ม
+        function resetForm() {
+            document.getElementById('ocopForm').reset();
+            document.getElementById('ocopForm').style.display = 'block';
+            document.getElementById('successMessage').style.display = 'none';
+        }
+
+        // Admin Functions
+        function checkAdmin() {
+            const pin = document.getElementById('adminPin').value;
+            if(pin === '1234') { // รหัสผ่านแอดมิน (เปลี่ยนได้ที่นี่)
+                document.getElementById('admin-login').style.display = 'none';
+                document.getElementById('admin-dashboard').style.display = 'block';
+                loadAdminData();
+            } else {
+                document.getElementById('loginError').style.display = 'block';
+            }
+        }
+
+        // โหลดข้อมูลจาก Google Sheet มาแสดง
+        async function loadAdminData() {
+            const tbody = document.getElementById('dataTableBody');
+            tbody.innerHTML = '<tr><td colspan="5" class="p-6 text-center text-gray-500">กำลังโหลดข้อมูลจาก Google Sheet... ⏳</td></tr>';
+            
+            try {
+                const response = await fetch(SCRIPT_URL);
+                const data = await response.json();
+                
+                document.getElementById('totalCount').innerText = `รวม ${data.length} รายการ`;
+                tbody.innerHTML = '';
+                
+                if(data.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="5" class="p-6 text-center text-gray-400">ยังไม่มีข้อมูลในระบบ</td></tr>';
+                    return;
+                }
+
+                // สลับข้อมูลล่าสุดขึ้นก่อน (Reverse)
+                data.reverse().forEach(item => {
+                    const tr = document.createElement('tr');
+                    tr.className = 'border-b hover:bg-purple-50 transition-colors';
+                    tr.innerHTML = `
+                        <td class="p-3 text-xs text-gray-500">${item.timestamp}</td>
+                        <td class="p-3 font-semibold text-purple-700">${item.classroom}</td>
+                        <td class="p-3">${item.teacher}</td>
+                        <td class="p-3 font-medium">${item.product}</td>
+                        <td class="p-3 max-w-xs truncate" title="${item.details}">${item.details}</td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            } catch (error) {
+                tbody.innerHTML = '<tr><td colspan="5" class="p-6 text-center text-red-500">โหลดข้อมูลล้มเหลว โปรดตรวจสอบ URL ของ Apps Script</td></tr>';
+                document.getElementById('totalCount').innerText = `ข้อผิดพลาดในการโหลด`;
+            }
+        }
+    </script>
+</body>
+</html>
